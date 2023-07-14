@@ -31,8 +31,10 @@ sealed interface GameActions {
 }
 
 sealed interface GameLetter {
-    data class Visible(val letter: Char) : GameLetter
-    object Hidden : GameLetter
+    val letter: Char
+
+    data class Visible(override val letter: Char) : GameLetter
+    data class Hidden(override val letter: Char) : GameLetter
 }
 
 enum class HangmanState(val errorCount: Int) {
